@@ -1,5 +1,8 @@
 # MonLivre
-**A personal space to organize, track, and annotate your favorite books.**
+[![fr](https://img.shields.io/badge/lang-fr-blue.svg)](README.fr.md)
+[![en](https://img.shields.io/badge/lang-ptbr-green.svg)](README.pt-br.md)
+
+*A personal space to organize, track, and annotate your favorite books.*
 
 ## About the Project
 MonLivre is an app designed for book lovers who want to:
@@ -47,4 +50,4 @@ MonLivre is an app designed for book lovers who want to:
 5. Access the app in your browser at http://localhost:3000.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

@@ -1,5 +1,8 @@
 # MonLivre
-**Un espace personnel pour organiser, suivre et annoter vos livres préférés.**
+[![en](https://img.shields.io/badge/lang-en-red.svg)](README.en.md)
+[![en](https://img.shields.io/badge/lang-ptbr-green.svg)](README.pt-br.md)
+
+*Un espace personnel pour organiser, suivre et annoter vos livres préférés.*
 
 ## À propos du projet
 MonLivre est une application conçue pour les amoureux des livres qui souhaitent :
@@ -51,5 +54,5 @@ MonLivre est une application conçue pour les amoureux des livres qui souhaitent
 5. Accédez à l'application via : http://localhost:3000
 
 ## Licence
-Ce projet est sous licence MIT. Consultez le fichier LICENSE pour plus de détails.
+Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.
 
