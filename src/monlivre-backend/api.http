@@ -1,0 +1,27 @@
+# Create a new book
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "title": "The Great Gatsby",
+  "publicationYear": 1925,
+  "isbn": "9780743273565",
+  "language": "English"
+}
+
+### Fetch all books
+GET http://localhost:3000/books
+
+### Fetch a single book by ID
+GET http://localhost:3000/books/1
+
+### Update a book by ID
+PATCH http://localhost:3000/books/1
+Content-Type: application/json
+
+{
+  "title": "The Great Gatsby (Updated Edition)"
+}
+
+### Delete a book by ID
+DELETE http://localhost:3000/books/1
