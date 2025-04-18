@@ -1,0 +1,15 @@
+include:
+  - ../postgres/docker-compose.yml
+
+services:
+  backend:
+    build: .
+    ports:
+      - "3000:3000"
+    # environment:
+    #     DATABASE_URL="postgresql://postgres:root@postgres:5432/monlivre?schema=public"
+    env_file:
+      - .env.include
+    depends_on:
+      postgres:
+        condition: service_healthy

@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:17.4-alpine3.21
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: "root"
+    volumes:
+      - ./.docker/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 2s
+      retries: 20
+    extra_hosts:
+        - "host.docker.internal:host-gateway"
+
+  pgadmin:
+      image: dpage/pgadmin4:9.2.0
+      restart: always
+      ports:
+        - 8888:80
+      environment:
+        PGADMIN_DEFAULT_EMAIL: admin@user.com
+        PGADMIN_DEFAULT_PASSWORD: secret
+        PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
+      volumes:
+        - ./servers.json:/pgadmin4/servers.json

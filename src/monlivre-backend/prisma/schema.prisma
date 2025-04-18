@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id            Int     @id @default(autoincrement())
+  title         String
+  publicationYear Int
+  isbn          String
+  language      String
+  Editions      Edition[]
+  UserBooks     UserBook[]
+}
+
+model Edition {
+  id            Int     @id @default(autoincrement())
+  bookId        Int
+  publisher     String
+  yearPublished Int
+  editionType   String
+  isbn          String
+  extraDetails  String?
+  Book          Book    @relation(fields: [bookId], references: [id])
+  UserBooks     UserBook[]
+}
+
+model UserBook {
+  id            Int     @id @default(autoincrement())
+  userId        Int
+  bookId        Int
+  editionId     Int?
+  owned         Boolean
+  read          Boolean
+  wishlist      Boolean
+  User          User    @relation(fields: [userId], references: [id])
+  Book          Book    @relation(fields: [bookId], references: [id])
+  Edition       Edition? @relation(fields: [editionId], references: [id])
+  Annotations   Annotation[]
+}
+
+model Annotation {
+  id            Int     @id @default(autoincrement())
+  userBookId    Int
+  content       String
+  createdAt     DateTime @default(now())
+  UserBook      UserBook @relation(fields: [userBookId], references: [id])
+}
+
+model User {
+  id            Int     @id @default(autoincrement())
+  username      String
+  role          String
+  createdAt     DateTime @default(now())
+  UserBooks     UserBook[]
+}
